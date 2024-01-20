@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import CardProducts from "../../components/CardProducts/CardProducts";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./inicio.css";
 import { Login } from "../../components/Login/Login";
 
 function InicioPage() {
   const [products, setProducts] = useState(null);
-
-  const loginNavigate = useNavigate();
 
   useEffect(() => {
     fetch("https://appcoffee-deploy1.onrender.com/api/products")
@@ -18,15 +16,12 @@ function InicioPage() {
   return (
     <>
       <div className="container position-absolute top-0 start-100 translate-middle">
-        <button id="login" type="button" className="btn btn-primary p-2">
-          Registrarse
-        </button>
-        <button
-          id="register"
-          type="button"
-          className="btn btn-primary p-2"
-          onClick={loginNavigate("/login")}
-        >
+        <Link to={"/login"}>
+          <button id="login" type="button" className="btn btn-primary p-2">
+            Registrarse
+          </button>
+        </Link>
+        <button id="register" type="button" className="btn btn-primary p-2">
           Iniciar sesión
         </button>
       </div>
