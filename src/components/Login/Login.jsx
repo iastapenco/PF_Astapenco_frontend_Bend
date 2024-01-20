@@ -25,12 +25,8 @@ export const Login = () => {
       const datos = await response.json();
       document.cookie = `jwtCookie=${datos.token}; expires${new Date(
         Date.now() + 1 * 24 * 60 * 60 * 1000
-      ).toUTCString()};path=/;httponly=true`;
-
-      const dataUser = localStorage.setItem(
-        "userName",
-        JSON.stringify(datos.payload.first_name)
-      );
+      ).toUTCString()};path=/;httponly`;
+      console.log(datos);
       navigate("/");
     } else {
       console.log(response);
