@@ -27,7 +27,6 @@ export const Login = () => {
         Date.now() + 1 * 24 * 60 * 60 * 1000
       ).toUTCString()};path=/;httponly=true`;
       localStorage.setItem("dataUser", JSON.stringify(datos.payload));
-      console.log(JSON.parse(localStorage.getItem("dataUser")));
       navigate("/");
     } else {
       console.log(response);

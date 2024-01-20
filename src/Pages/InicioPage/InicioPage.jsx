@@ -1,17 +1,28 @@
 import { useState, useEffect } from "react";
 import CardProducts from "../../components/CardProducts/CardProducts";
+import ListItemContainer from "../../components/ListItemContainer/ListItemContainer";
+import Spinner from "../../components/Spinner/Spinner";
 import { Link } from "react-router-dom";
 import "./inicio.css";
 
 function InicioPage() {
   const [products, setProducts] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://appcoffee-deploy1.onrender.com/api/products")
       .then((response) => response.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        setProducts(data);
+        setIsLoading(false);
+      });
   }, []);
 
+  const userData = JSON.parse(localStorage.getItem("dataUser"));
+
+  if (isLoading) {
+    return <Spinner />;
+  }
   return (
     <>
       <div className="container position-absolute top-0 start-100 translate-middle">
@@ -26,7 +37,7 @@ function InicioPage() {
           </button>
         </Link>
       </div>
-      <br />
+
       <h2 className="center">Lista de productos</h2>
       <div className="container row-gap-3 column-gap-3 d-flex flex-row justify-content-around align-content-around flex-wrap bg-primary mb-4">
         {products &&
