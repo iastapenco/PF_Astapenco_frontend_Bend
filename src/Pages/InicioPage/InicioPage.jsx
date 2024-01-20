@@ -16,7 +16,7 @@ function InicioPage() {
   return (
     <>
       <div className="container position-absolute top-0 start-100 translate-middle">
-        <Link to={"https://coffeeshoponline.onrender.com//login"}>
+        <Link to={"/login"}>
           <button id="login" type="button" className="btn btn-primary p-2">
             Registrarse
           </button>
