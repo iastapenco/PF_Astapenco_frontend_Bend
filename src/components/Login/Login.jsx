@@ -26,7 +26,7 @@ export const Login = () => {
       document.cookie = `jwtCookie=${datos.token}; expires${new Date(
         Date.now() + 1 * 24 * 60 * 60 * 1000
       ).toUTCString()};path=/;httponly=true`;
-      navigate("/products");
+      navigate("/");
     } else {
       console.log(response);
     }

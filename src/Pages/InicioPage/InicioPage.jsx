@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import CardProducts from "../../components/CardProducts/CardProducts";
 import { Link } from "react-router-dom";
+import "./inicio.css";
 
 function InicioPage() {
   const [products, setProducts] = useState(null);
@@ -14,7 +15,7 @@ function InicioPage() {
   return (
     <>
       <h2>Productos</h2>
-      <div className="container">
+      <div className="container row-gap-3 column-gap-3 d-flex flex-row justify-content-around align-content-around flex-wrap bg-primary mb-4">
         {products &&
           products.mensaje &&
           products.mensaje.docs &&
