@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Login } from "./components/Login/Login";
 import InicioPage from "./Pages/InicioPage/InicioPage";
+import Register from "./components/Register/Register";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<InicioPage />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </>
   );

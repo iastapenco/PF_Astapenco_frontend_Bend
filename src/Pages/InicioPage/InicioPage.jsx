@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import CardProducts from "../../components/CardProducts/CardProducts";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./inicio.css";
-import { Login } from "../../components/Login/Login";
 
 function InicioPage() {
   const [products, setProducts] = useState(null);
@@ -18,12 +17,14 @@ function InicioPage() {
       <div className="container position-absolute top-0 start-100 translate-middle">
         <Link to={"/login"}>
           <button id="login" type="button" className="btn btn-primary p-2">
-            Registrarse
+            Iniciar sesión
           </button>
         </Link>
-        <button id="register" type="button" className="btn btn-primary p-2">
-          Iniciar sesión
-        </button>
+        <Link to={"/register"}>
+          <button id="register" type="button" className="btn btn-primary p-2">
+            Registarse
+          </button>
+        </Link>
       </div>
       <br />
       <h2 className="center">Lista de productos</h2>
