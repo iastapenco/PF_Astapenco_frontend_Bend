@@ -27,7 +27,6 @@ export const Login = () => {
         Date.now() + 1 * 24 * 60 * 60 * 1000
       ).toUTCString()};path=/;httponly=true`;
       navigate("/products");
-      console.log(response);
     } else {
       console.log(response);
     }
