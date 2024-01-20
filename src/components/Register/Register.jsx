@@ -33,9 +33,9 @@ const Register = () => {
     <div>
       <h2>Registro de usuario</h2>
 
-      <form id="login_form" onSubmit={handleSubmit} ref={formRef}>
+      <form id="register_form" onSubmit={handleSubmit} ref={formRef}>
         <div class="mb-3">
-          <label for="first_name" class="form-label">
+          <label htmlFor="first_name" class="form-label">
             Nombre
           </label>
           <input
@@ -47,7 +47,7 @@ const Register = () => {
           />
         </div>
         <div class="mb-3">
-          <label for="last_name" class="form-label">
+          <label htmlFor="last_name" class="form-label">
             Nombre
           </label>
           <input
@@ -59,7 +59,7 @@ const Register = () => {
           />
         </div>
         <div class="mb-3">
-          <label for="inputEmail" class="form-label">
+          <label htmlFor="inputEmail" class="form-label">
             email:
           </label>
           <input
@@ -72,7 +72,7 @@ const Register = () => {
           />
         </div>
         <div class="mb-3">
-          <label for="age" class="form-label">
+          <label htmlFor="age" class="form-label">
             Nombre
           </label>
           <input
@@ -84,7 +84,7 @@ const Register = () => {
           />
         </div>
         <div class="mb-3">
-          <label for="inputPassword" class="form-label">
+          <label htmlFor="inputPassword" class="form-label">
             Contraseña:
           </label>
           <input

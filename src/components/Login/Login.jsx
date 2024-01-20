@@ -26,9 +26,10 @@ export const Login = () => {
       document.cookie = `jwtCookie=${datos.token}; expires${new Date(
         Date.now() + 1 * 24 * 60 * 60 * 1000
       ).toUTCString()};path=/;httponly=true`;
+
       const dataUser = localStorage.setItem(
         "userName",
-        datos.payload.first_name
+        JSON.stringify(datos.payload.first_name)
       );
       navigate("/");
     } else {
@@ -42,15 +43,25 @@ export const Login = () => {
       <form onSubmit={handleSumbit} ref={formRef}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
-            Email:{" "}
+            Email:
           </label>
-          <input type="email" name="email" className="form-control" />
+          <input
+            type="email"
+            name="email"
+            className="form-control"
+            id="email"
+          />
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">
-            Password:{" "}
+            Password:
           </label>
-          <input type="password" name="password" className="form-control" />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            className="form-control"
+          />
         </div>
         <button type="submit" className="btn btn-dark">
           Iniciar Sesion
