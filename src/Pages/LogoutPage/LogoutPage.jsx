@@ -1,10 +1,11 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 const LogoutPage = () => {
-  useEffect(() => {
+  const logout = () => {
     fetch("https://appcoffee-deploy1.onrender.com/api/sessions/logout");
-  }, [logout]);
+  };
+
+  useEffect(logout, []);
 
   return (
     <div>
