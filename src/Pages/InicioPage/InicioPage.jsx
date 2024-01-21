@@ -26,7 +26,7 @@ function InicioPage() {
   }
   return (
     <>
-      {user && user.rol !== "admin" ? (
+      {user && user.rol && user.rol !== "admin" ? (
         <>
           <LoginAndRegister />
           <ListItemContainer />
