@@ -33,7 +33,7 @@ export const Login = () => {
       localStorage.setItem("dataUser", JSON.stringify(datos.payload));
       navigate("/");
     }
-    setLoading(false);
+    setLoading(true);
   };
 
   return (
