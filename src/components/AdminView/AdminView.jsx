@@ -14,7 +14,7 @@ const AdminView = () => {
     return (
       <>
         <button className="btn btn-primary" onClick={toggleUsersList}>
-          {!showUsersList ? "Ocultar usuarios":"ver usuarios"}
+          {showUsersList ? "Ocultar usuarios" : "ver usuarios"}
         </button>
         {showUsersList && <UsersList />}
       </>
