@@ -12,6 +12,7 @@ const AdminView = () => {
     <div className="container">
       {users &&
         users.mensaje &&
+        Array.isArray(users.mensaje) &&
         users.mensaje.map((user) => {
           return (
             <ul key={user._id} className="list-group">
