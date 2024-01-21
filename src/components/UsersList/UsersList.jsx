@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const UsersList = () => {
   const [users, setUsers] = useState(null);
   useEffect(() => {
-    fetch("https://appcoffee-deploy1.onrender.com/api/users")
+    fetch("https://appcoffee-deploy1.onrender.com/api/users/userslist")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
