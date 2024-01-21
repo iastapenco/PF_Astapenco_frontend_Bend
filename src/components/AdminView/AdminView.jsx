@@ -17,10 +17,10 @@ const AdminView = () => {
           return (
             <ul key={user._id} className="list-group">
               <li className="list-group-item">
-                `Usuario: ${user.first_name} ${user.last_name}`
+                Usuario: {user.first_name} {user.last_name}
               </li>
-              <li className="list-group-item">`Email: ${user.email}`</li>
-              <li className="list-group-item">`Rol: ${user.rol}`</li>
+              <li className="list-group-item">Email: {user.email}</li>
+              <li className="list-group-item">Rol: {user.rol}</li>
             </ul>
           );
         })}

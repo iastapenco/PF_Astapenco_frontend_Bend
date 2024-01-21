@@ -26,10 +26,10 @@ function InicioPage() {
   }
   return (
     <>
-      <LoginAndRegister />
-      <ListItemContainer />
       {user && user.rol !== "admin" ? (
         <>
+          <LoginAndRegister />
+          <ListItemContainer />
           <div>
             <h2 className="center">Lista de productos</h2>
           </div>
@@ -49,7 +49,11 @@ function InicioPage() {
           </div>
         </>
       ) : (
-        <AdminView />
+        <>
+          <LoginAndRegister />
+          <ListItemContainer />
+          <AdminView />
+        </>
       )}
     </>
   );
