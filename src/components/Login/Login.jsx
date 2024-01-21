@@ -1,11 +1,15 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../Spinner/Spinner";
+
 export const Login = () => {
   const formRef = useRef(null);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleSumbit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const datForm = new FormData(formRef.current);
     const data = Object.fromEntries(datForm);
 
@@ -28,41 +32,44 @@ export const Login = () => {
       ).toUTCString()};path=/;httponly=true`;
       localStorage.setItem("dataUser", JSON.stringify(datos.payload));
       navigate("/");
-    } else {
-      console.log(response);
     }
+    setLoading(false);
   };
 
   return (
     <div className="container">
       <h2>Formulario de Login</h2>
-      <form onSubmit={handleSumbit} ref={formRef}>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email:
-          </label>
-          <input
-            type="email"
-            name="email"
-            className="form-control"
-            id="email"
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password:
-          </label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            className="form-control"
-          />
-        </div>
-        <button type="submit" className="btn btn-dark">
-          Iniciar Sesion
-        </button>
-      </form>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <form onSubmit={handleSumbit} ref={formRef}>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              Email:
+            </label>
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              id="email"
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+              Password:
+            </label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              className="form-control"
+            />
+          </div>
+          <button type="submit" className="btn btn-dark">
+            Iniciar Sesion
+          </button>
+        </form>
+      )}
     </div>
   );
 };
