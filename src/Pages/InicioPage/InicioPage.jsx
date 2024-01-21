@@ -28,8 +28,7 @@ function InicioPage() {
     <>
       <LoginAndRegister />
       <ListItemContainer />
-      if (user && user.rol !="admin")
-      {
+      {user && user.rol !== "admin" ? (
         <>
           <div>
             <h2 className="center">Lista de productos</h2>
@@ -49,8 +48,9 @@ function InicioPage() {
               })}
           </div>
         </>
-      }
-      else {<AdminView />}
+      ) : (
+        <AdminView />
+      )}
     </>
   );
 }
