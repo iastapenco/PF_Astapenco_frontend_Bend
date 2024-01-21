@@ -26,7 +26,7 @@ const LoginAndRegister = () => {
         <button
           id="logout"
           type="button"
-          className="btn btn-primary p-2 btn_logout"
+          className="btn btn-primary p-2 btn_logout m-3"
         >
           Logout
         </button>
