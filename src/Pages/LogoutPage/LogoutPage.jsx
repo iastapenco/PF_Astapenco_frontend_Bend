@@ -5,6 +5,7 @@ const LogoutPage = () => {
   const inicioNavigate = useNavigate();
   const logout = () => {
     fetch("https://appcoffee-deploy1.onrender.com/api/sessions/logout");
+    localStorage.removeItem("dataUser");
     inicioNavigate("/");
   };
 
