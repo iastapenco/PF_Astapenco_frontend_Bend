@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const DeleteUsers = () => {
   const [status, setStatus] = useState(null);
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
     const deleteUsers = async () => {
@@ -17,12 +18,17 @@ const DeleteUsers = () => {
       );
 
       setStatus(response.status);
+      setShowMessage(true);
+
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 5000);
     };
 
     deleteUsers();
   }, []);
 
-  if (status === 200) {
+  if (showMessage && status === 200) {
     return (
       <div>
         <h3>
@@ -30,7 +36,7 @@ const DeleteUsers = () => {
         </h3>
       </div>
     );
-  } else {
+  } else if (showMessage) {
     return (
       <div>
         <h3>
@@ -39,6 +45,8 @@ const DeleteUsers = () => {
       </div>
     );
   }
+
+  return null;
 };
 
 export default DeleteUsers;
