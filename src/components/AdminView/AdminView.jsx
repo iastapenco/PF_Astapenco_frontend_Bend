@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./admin_view.css";
 
 const AdminView = () => {
   const [users, setUsers] = useState(null);
