@@ -1,31 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import UsersList from "../UsersList/UsersList";
 import "./admin_view.css";
 
 const AdminView = () => {
-  const [users, setUsers] = useState(null);
-  useEffect(() => {
-    fetch("https://appcoffee-deploy1.onrender.com/api/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  }, []);
+  const user = JSON.parse(localStorage.getItem("dataUser"));
+  const [showUsersList, setShowUsersList] = useState(false);
+
+  const toggleUsersList = () => {
+    setShowUsersList(!showUsersList);
+  };
+
+  if (user && user.rol === "admin") {
+    return (
+      <>
+        <button className="btn btn-primary" onClick={toggleUsersList}>
+          Ver usuarios
+        </button>
+        {showUsersList && <UsersList />}
+      </>
+    );
+  }
 
   return (
-    <div className="container">
-      {users &&
-        users.mensaje &&
-        Array.isArray(users.mensaje) &&
-        users.mensaje.map((user) => {
-          return (
-            <ul key={user._id} className="list-group">
-              <li className="list-group-item">
-                Usuario: {user.first_name} {user.last_name}
-              </li>
-              <li className="list-group-item">Email: {user.email}</li>
-              <li className="list-group-item">Rol: {user.rol}</li>
-            </ul>
-          );
-        })}
-    </div>
+    <>
+      <h2>Usted no tiene los permisos necesarios para acceder</h2>
+    </>
   );
 };
 
