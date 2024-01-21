@@ -10,8 +10,13 @@ function InicioPage() {
   const [isLoading, setIsLoading] = useState(true);
   const user = JSON.parse(localStorage.getItem("dataUser"));
 
-  if (isLoading) {
-    return <Spinner />;
+  if (!user) {
+    return (
+      <>
+        <LoginAndRegister />
+        <Products />
+      </>
+    );
   }
   return (
     <>
