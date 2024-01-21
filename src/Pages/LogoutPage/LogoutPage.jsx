@@ -6,6 +6,8 @@ const LogoutPage = () => {
   const logout = () => {
     fetch("https://appcoffee-deploy1.onrender.com/api/sessions/logout");
     localStorage.removeItem("dataUser");
+    document.cookie =
+      "jwtCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=https://appcoffee-deploy1.onrender.com";
     inicioNavigate("/");
   };
 
