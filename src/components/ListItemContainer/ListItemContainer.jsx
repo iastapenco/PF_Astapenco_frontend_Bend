@@ -2,7 +2,7 @@ import React from "react";
 import "./list_item_container.css";
 
 const ListItemContainer = () => {
-  const user = JSON.parse(localStorage("dataUser"));
+  const user = JSON.parse(localStorage.setItem("dataUser"));
 
   if (user) {
     if (user.rol === "admin") {
