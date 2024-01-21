@@ -1,14 +1,26 @@
 import React from "react";
 import "./list_item_container.css";
 
-const ListItemContainer = ({ first_name, last_name }) => {
-  return (
-    <>
-      <h2 className="saludos">
-        {`Bienvenido ${first_name} ${last_name} a nuestro coffee shop online!`}
-      </h2>
-    </>
-  );
+const ListItemContainer = () => {
+  const user = JSON.parse(localStorage("dataUser"));
+
+  if (user.rol === "admin") {
+    return (
+      <>
+        <h2 className="saludos">
+          {`Bienvenido administrador ${user.first_name} ${user.last_name}`}
+        </h2>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <h2 className="saludos">
+          {`Bienvenido ${user.first_name} ${user.last_name} a nuestro coffee shop online!`}
+        </h2>
+      </>
+    );
+  }
 };
 
 export default ListItemContainer;
