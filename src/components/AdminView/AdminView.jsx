@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const AdminView = () => {
   const [users, setUsers] = useState(null);
   useEffect(() => {
-    fetch("https://appcoffee-deploy1.onrender.com/api/users/userlist")
+    fetch("https://appcoffee-deploy1.onrender.com/api/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
