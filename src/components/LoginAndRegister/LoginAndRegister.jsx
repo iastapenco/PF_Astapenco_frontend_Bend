@@ -20,11 +20,13 @@ const LoginAndRegister = () => {
       </div>
     );
   } else {
-    <Link to={"/logout"}>
-      <button id="logout" type="button" className="btn btn-primary p-2">
-        Logout
-      </button>
-    </Link>;
+    return (
+      <Link to={"/logout"}>
+        <button id="logout" type="button" className="btn btn-primary p-2">
+          Logout
+        </button>
+      </Link>
+    );
   }
 };
 
