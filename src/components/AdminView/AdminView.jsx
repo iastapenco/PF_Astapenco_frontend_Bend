@@ -19,11 +19,11 @@ const AdminView = () => {
   if (user && user.rol === "admin") {
     return (
       <>
-        <button className="btn btn-primary" onClick={toggleUsersList}>
+        <button className="btn btn-primary m-3" onClick={toggleUsersList}>
           {showUsersList ? "Ocultar usuarios" : "ver usuarios"}
         </button>
         {showUsersList && <UsersList />}
-        <button className="btn btn-danger" onClick={toggleDeleteUsers}>
+        <button className="btn btn-danger m-3" onClick={toggleDeleteUsers}>
           Borrar usuarios con más de 2 días de la última conexión
         </button>
         {showDeleteUsers && <DeleteUsers />}
