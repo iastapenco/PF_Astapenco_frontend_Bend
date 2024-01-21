@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LogoutPage = () => {
+  const inicioNavigate = useNavigate();
   const logout = () => {
     fetch("https://appcoffee-deploy1.onrender.com/api/sessions/logout");
+    inicioNavigate("/");
   };
 
   useEffect(logout, []);
