@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./logout_page.css";
 
 const LoginAndRegister = () => {
   const user = JSON.parse(localStorage.getItem("dataUser"));
@@ -22,7 +23,11 @@ const LoginAndRegister = () => {
   } else {
     return (
       <Link to={"/logout"}>
-        <button id="logout" type="button" className="btn btn-primary p-2">
+        <button
+          id="logout"
+          type="button"
+          className="btn btn-primary p-2 btn_logout"
+        >
           Logout
         </button>
       </Link>
