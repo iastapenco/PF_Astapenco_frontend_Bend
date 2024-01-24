@@ -21,7 +21,7 @@ export const Login = () => {
           "Content-type": "application/json",
         },
         body: JSON.stringify(data),
-        credentials: "include",
+        //credentials: "include",
       }
     );
 
