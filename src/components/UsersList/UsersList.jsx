@@ -5,11 +5,7 @@ import ChangeUserRol from "../ChangeUserRol/ChangeUserRol";
 const UsersList = () => {
   const [users, setUsers] = useState(null);
   useEffect(() => {
-    fetch("https://appcoffee-deploy1.onrender.com/api/users/userslist", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    fetch("https://appcoffee-deploy1.onrender.com/api/users/userslist")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);

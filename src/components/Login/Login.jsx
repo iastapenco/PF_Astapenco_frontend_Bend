@@ -19,7 +19,6 @@ export const Login = () => {
         method: "POST",
         headers: {
           "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(data),
         credentials: "include",
