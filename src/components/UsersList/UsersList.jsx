@@ -14,7 +14,7 @@ const UsersList = () => {
     fetch("https://appcoffee-deploy1.onrender.com/api/users/userslist", {
       method: "GET",
       headers: {
-        "Content type": "application/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       credentials: "include",
