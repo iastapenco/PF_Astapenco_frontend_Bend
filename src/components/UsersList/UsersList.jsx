@@ -4,8 +4,21 @@ import ChangeUserRol from "../ChangeUserRol/ChangeUserRol";
 
 const UsersList = () => {
   const [users, setUsers] = useState(null);
+
   useEffect(() => {
-    fetch("https://appcoffee-deploy1.onrender.com/api/users/userslist")
+    const token = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("jwtCookie="))
+      .split("=")[1];
+
+    fetch("https://appcoffee-deploy1.onrender.com/api/users/userslist", {
+      method: "GET",
+      headers: {
+        "Content type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      credentials: "include",
+    })
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
@@ -17,7 +30,7 @@ const UsersList = () => {
         Array.isArray(users.mensaje) &&
         users.mensaje.map((user) => {
           return (
-            <Link to={<ChangeUserRol />}>
+            <Link to="/changeUserRole">
               <ul key={user._id} className="list-group">
                 <li className="list-group-item">
                   Usuario: {user.first_name} {user.last_name}
