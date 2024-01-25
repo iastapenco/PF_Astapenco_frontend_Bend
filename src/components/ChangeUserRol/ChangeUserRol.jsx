@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 
 const ChangeUserRol = ({ dataUser }) => {
   const formRef = useRef(null);
-  const { first_name, last_name, email, age, password, _id, rol } = dataUser;
+  const { first_name, last_name, email, age, password, _id } = dataUser;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
