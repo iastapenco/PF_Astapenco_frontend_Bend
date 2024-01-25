@@ -35,7 +35,7 @@ const UsersList = () => {
               </li>
               <li className="list-group-item">Email: {user.email}</li>
               <li className="list-group-item">Rol: {user.rol}</li>
-              <ChangeUserRol id={user._id} />
+              <ChangeUserRol dataUser={user} />
             </ul>
           );
         })}

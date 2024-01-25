@@ -1,24 +1,33 @@
 import { useRef, useState } from "react";
 
-const ChangeUserRol = ({ id }) => {
+const ChangeUserRol = ({ dataUser }) => {
   const formRef = useRef(null);
+  const { first_name, last_name, email, age, password, _id, rol } = dataUser;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const datForm = new FormData(formRef.current);
-    const data = Object.fromEntries(datForm);
+    const dataForm = Object.fromEntries(datForm);
     const token = document.cookie
       .split("; ")
       .find((row) => row.startsWith("jwtCookie="))
       .split("=")[1];
 
-    fetch(`https://appcoffee-deploy1.onrender.com/api/users/${id}`, {
+    fetch(`https://appcoffee-deploy1.onrender.com/api/users/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ rol: data }),
+      body: JSON.stringify({
+        _id,
+        first_name,
+        last_name,
+        age,
+        email,
+        password,
+        rol: dataForm,
+      }),
     });
   };
 
