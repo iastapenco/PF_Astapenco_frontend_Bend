@@ -18,7 +18,6 @@ const Register = () => {
           "Content-type": "application/json",
         },
         body: JSON.stringify(data),
-        credentials: "include",
       }
     );
 
