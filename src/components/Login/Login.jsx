@@ -6,6 +6,11 @@ export const Login = () => {
   const formRef = useRef(null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const token = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("jwtCookie="))
+      .split("=")[1];
 
   const handleSumbit = async (e) => {
     e.preventDefault();
@@ -19,9 +24,9 @@ export const Login = () => {
         method: "POST",
         headers: {
           "Content-type": "application/json",
+          Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(data),
-        credentials: "include",
       }
     );
 
