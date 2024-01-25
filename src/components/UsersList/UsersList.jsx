@@ -17,7 +17,6 @@ const UsersList = () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      //credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => setUsers(data));
