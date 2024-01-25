@@ -21,19 +21,18 @@ export const Login = () => {
           "Content-type": "application/json",
         },
         body: JSON.stringify(data),
-        //credentials: "include",
       }
     );
 
     if (response.status == 200) {
       const datos = await response.json();
-      document.cookie = `jwtCookie=${datos.token}; expires${new Date(
+      document.cookie = `jwtCookie=${datos.token}; expires=${new Date(
         Date.now() + 1 * 24 * 60 * 60 * 1000
-      ).toUTCString()};path=/`;
+      ).toUTCString()};path=/;httpOnly=true`;
       localStorage.setItem("dataUser", JSON.stringify(datos.payload));
       navigate("/");
     }
-    setLoading(true);
+    setLoading(false);
   };
 
   return (
