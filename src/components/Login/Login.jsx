@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 
@@ -6,12 +6,15 @@ export const Login = () => {
   const formRef = useRef(null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState(null);
+
   useEffect(() => {
-    const token = document.cookie
+    const jwtToken = document.cookie
       .split("; ")
       .find((row) => row.startsWith("jwtCookie="))
       .split("=")[1];
-  });
+    setToken(jwtToken);
+  }, []);
 
   const handleSumbit = async (e) => {
     e.preventDefault();
@@ -39,7 +42,7 @@ export const Login = () => {
       localStorage.setItem("dataUser", JSON.stringify(datos.payload));
       navigate("/");
     }
-    setLoading(true);
+    setLoading(false);
   };
 
   return (
