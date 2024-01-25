@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 
@@ -6,15 +6,6 @@ export const Login = () => {
   const formRef = useRef(null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [token, setToken] = useState(null);
-
-  useEffect(() => {
-    const jwtToken = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("jwtCookie="))
-      .split("=")[1];
-    setToken(jwtToken);
-  }, []);
 
   const handleSumbit = async (e) => {
     e.preventDefault();
@@ -28,7 +19,6 @@ export const Login = () => {
         method: "POST",
         headers: {
           "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(data),
       }
