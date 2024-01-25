@@ -46,8 +46,8 @@ const ChangeUserRol = ({ dataUser }) => {
         aria-label="Default select example"
       >
         <option selected>Seleccione un rol</option>
-        <option value="1">user</option>
-        <option value="2">admin</option>
+        <option value="user">user</option>
+        <option value="admin">admin</option>
       </select>
       <button type="submit" class="btn btn-primary mt-3">
         Enviar
