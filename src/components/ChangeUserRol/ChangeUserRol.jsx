@@ -9,7 +9,6 @@ const ChangeUserRol = ({ dataUser }) => {
     const datForm = new FormData(formRef.current);
     const dataForm = Object.fromEntries(datForm);
     const rol = dataForm.rol;
-    console.log("Rol seleccionado: ", rol);
 
     const token = document.cookie
       .split("; ")
@@ -17,7 +16,6 @@ const ChangeUserRol = ({ dataUser }) => {
       .split("=")[1];
 
     const dataToSend = {
-      _id,
       first_name,
       last_name,
       age,
@@ -26,15 +24,13 @@ const ChangeUserRol = ({ dataUser }) => {
       rol,
     };
 
-    console.log("Datos enviados: ", dataToSend); // Imprime los datos enviados
-
     fetch(`https://appcoffee-deploy1.onrender.com/api/users/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(dataToSend),
+      body: JSON.stringify(_id, dataToSend),
     });
   };
 
