@@ -1,29 +1,42 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 
-const ChangeUserRol = () => {
+const ChangeUserRol = ({ id }) => {
+  const formRef = useRef(null);
   const [users, setUsers] = useState(null);
-  useEffect(() => {
-    fetch("https://appcoffee-deploy1.onrender.com/api/users/")
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const datForm = new FormData(formRef.current);
+    const data = Object.fromEntries(datForm);
+
+    const token = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("jwtCookie="))
+      .split("=")[1];
+
+    fetch(`https://appcoffee-deploy1.onrender.com/api/users/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .then((data) => setUsers(data));
-  }, []);
+  };
 
   return (
-    <div className="container">
-      {users &&
-        users.mensaje &&
-        Array.isArray(users.mensaje) &&
-        users.mensaje.map((user) => {
-          return (
-            <ul key={user._id} className="list-group">
-              <li className="list-group-item">
-                Usuario: {user.first_name} {user.last_name}
-              </li>
-              <li className="list-group-item">Rol: {user.rol}</li>
-            </ul>
-          );
-        })}
-    </div>
+    <form onSubmit={handleSubmit} ref={formRef}>
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Seleccione un rol</option>
+        <option value="1">user</option>
+        <option value="2">admin</option>
+      </select>
+      <button type="submit" class="btn btn-primary mt-3">
+        Enviar
+      </button>
+    </form>
   );
 };
 
