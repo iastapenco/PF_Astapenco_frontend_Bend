@@ -1,13 +1,12 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 const ChangeUserRol = ({ dataUser }) => {
   const formRef = useRef(null);
-  const { first_name, last_name, email, age, password, _id } = dataUser;
+  let { first_name, last_name, email, age, password, _id } = dataUser;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const datForm = new FormData(formRef.current);
-    const dataForm = Object.fromEntries(datForm);
+    const rol = new FormData(formRef.current).get("rol");
     const token = document.cookie
       .split("; ")
       .find((row) => row.startsWith("jwtCookie="))
@@ -26,14 +25,18 @@ const ChangeUserRol = ({ dataUser }) => {
         age,
         email,
         password,
-        rol: dataForm,
+        rol,
       }),
     });
   };
 
   return (
     <form onSubmit={handleSubmit} ref={formRef}>
-      <select class="form-select" aria-label="Default select example">
+      <select
+        name="rol"
+        class="form-select"
+        aria-label="Default select example"
+      >
         <option selected>Seleccione un rol</option>
         <option value="1">user</option>
         <option value="2">admin</option>
