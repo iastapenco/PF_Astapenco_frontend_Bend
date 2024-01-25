@@ -7,7 +7,6 @@ const ChangeUserRol = ({ id }) => {
     e.preventDefault();
     const datForm = new FormData(formRef.current);
     const data = Object.fromEntries(datForm);
-    const { rol } = data;
     const token = document.cookie
       .split("; ")
       .find((row) => row.startsWith("jwtCookie="))
@@ -19,7 +18,7 @@ const ChangeUserRol = ({ id }) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(rol),
+      body: JSON.stringify({ rol: data }),
     });
   };
 
