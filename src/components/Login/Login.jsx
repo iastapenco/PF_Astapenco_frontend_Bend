@@ -26,7 +26,7 @@ export const Login = () => {
 
     if (response.status == 200) {
       const datos = await response.json();
-      document.cookie = `jwtCookie=${datos.token}; expires=${new Date(
+      document.cookie = `jwtCookie=${datos.token}; expires${new Date(
         Date.now() + 1 * 24 * 60 * 60 * 1000
       ).toUTCString()};path=/`;
       localStorage.setItem("dataUser", JSON.stringify(datos.payload));
