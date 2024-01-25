@@ -2,13 +2,12 @@ import { useRef, useState } from "react";
 
 const ChangeUserRol = ({ id }) => {
   const formRef = useRef(null);
-  const [users, setUsers] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const datForm = new FormData(formRef.current);
     const data = Object.fromEntries(datForm);
-
+    const { rol } = data;
     const token = document.cookie
       .split("; ")
       .find((row) => row.startsWith("jwtCookie="))
@@ -20,10 +19,8 @@ const ChangeUserRol = ({ id }) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
+      body: JSON.stringify(rol),
+    });
   };
 
   return (
