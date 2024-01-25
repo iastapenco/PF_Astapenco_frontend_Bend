@@ -11,6 +11,7 @@ export const Login = () => {
       .split("; ")
       .find((row) => row.startsWith("jwtCookie="))
       .split("=")[1];
+  });
 
   const handleSumbit = async (e) => {
     e.preventDefault();
@@ -24,7 +25,7 @@ export const Login = () => {
         method: "POST",
         headers: {
           "Content-type": "application/json",
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(data),
       }
