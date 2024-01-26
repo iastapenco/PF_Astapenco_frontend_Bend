@@ -30,7 +30,7 @@ const ChangeUserRol = ({ dataUser }) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(_id, dataToSend),
+      body: JSON.stringify(dataToSend),
     });
   };
 
