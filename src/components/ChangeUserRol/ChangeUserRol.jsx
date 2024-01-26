@@ -32,6 +32,7 @@ const ChangeUserRol = ({ dataUser }) => {
       },
       body: JSON.stringify(dataToSend),
     });
+    window.location.reload();
   };
 
   return (
