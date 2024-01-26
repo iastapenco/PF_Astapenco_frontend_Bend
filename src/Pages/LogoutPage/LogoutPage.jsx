@@ -25,7 +25,7 @@ const LogoutPage = () => {
       );
       localStorage.removeItem("dataUser");
       document.cookie =
-        "jwtCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=https://appcoffee-deploy1.onrender.com";
+        "jwtCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; ";
       inicioNavigate("/");
     } catch (error) {
       console.error("Hubo un error al cerrar la sesión:", error);
