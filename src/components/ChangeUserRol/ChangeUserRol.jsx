@@ -24,14 +24,17 @@ const ChangeUserRol = ({ dataUser }) => {
       rol,
     };
 
-    fetch(`https://appcoffee-deploy1.onrender.com/api/users/${_id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(dataToSend),
-    });
+    const response = await fetch(
+      `https://appcoffee-deploy1.onrender.com/api/users/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(dataToSend),
+      }
+    );
     if (response.status == 200) window.location.reload();
   };
 
