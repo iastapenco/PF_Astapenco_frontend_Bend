@@ -2,23 +2,34 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const LogoutPage = () => {
-  const token = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("jwtCookie="))
-    .split("=")[1];
   const inicioNavigate = useNavigate();
-  const logout = () => {
-    fetch("https://appcoffee-deploy1.onrender.com/api/sessions/logout", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    localStorage.removeItem("dataUser");
-    document.cookie =
-      "jwtCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=https://appcoffee-deploy1.onrender.com";
-    inicioNavigate("/");
+  const logout = async () => {
+    const cookie = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("jwtCookie="));
+    if (!cookie) {
+      console.error("No se encontró la cookie jwtCookie");
+      return;
+    }
+    const token = cookie.split("=")[1];
+    try {
+      await fetch(
+        "https://appcoffee-deploy1.onrender.com/api/sessions/logout",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      localStorage.removeItem("dataUser");
+      document.cookie =
+        "jwtCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=https://appcoffee-deploy1.onrender.com";
+      inicioNavigate("/");
+    } catch (error) {
+      console.error("Hubo un error al cerrar la sesión:", error);
+    }
   };
 
   return (
