@@ -16,7 +16,7 @@ const LogoutPage = () => {
       await fetch(
         "https://appcoffee-deploy1.onrender.com/api/sessions/logout",
         {
-          method: "GET",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
