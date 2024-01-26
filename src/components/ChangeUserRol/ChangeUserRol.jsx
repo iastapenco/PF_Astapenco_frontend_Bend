@@ -32,7 +32,7 @@ const ChangeUserRol = ({ dataUser }) => {
       },
       body: JSON.stringify(dataToSend),
     });
-    window.location.reload();
+    if (response.status == 200) window.location.reload();
   };
 
   return (
