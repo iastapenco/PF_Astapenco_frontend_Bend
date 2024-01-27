@@ -5,10 +5,10 @@ const DeleteUsers = () => {
   const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
-    const token = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("jwtCookie="))
-      .split("=")[1];
+    // const token = document.cookie
+    //   .split("; ")
+    //   .find((row) => row.startsWith("jwtCookie="))
+    //   .split("=")[1];
     const deleteUsers = async () => {
       const response = await fetch(
         "https://appcoffee-deploy1.onrender.com/api/users/",
@@ -16,7 +16,7 @@ const DeleteUsers = () => {
           method: "DELETE",
           headers: {
             "Content-type": "application/json",
-            Authorization: `Bearer ${token}`,
+            //Authorization: `Bearer ${token}`,
           },
         }
       );

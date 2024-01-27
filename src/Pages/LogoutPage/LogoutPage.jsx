@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 const LogoutPage = () => {
   const inicioNavigate = useNavigate();
   const logout = async () => {
-    const cookie = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("jwtCookie="));
-    if (!cookie) {
-      console.error("No se encontró la cookie jwtCookie");
-      return;
-    }
-    const token = cookie.split("=")[1];
+    // const cookie = document.cookie
+    //   .split("; ")
+    //   .find((row) => row.startsWith("jwtCookie="));
+    // if (!cookie) {
+    //   console.error("No se encontró la cookie jwtCookie");
+    //   return;
+    // }
+    // const token = cookie.split("=")[1];
     try {
       await fetch(
         "https://appcoffee-deploy1.onrender.com/api/sessions/logout",
@@ -19,7 +19,7 @@ const LogoutPage = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            //Authorization: `Bearer ${token}`,
           },
         }
       );
