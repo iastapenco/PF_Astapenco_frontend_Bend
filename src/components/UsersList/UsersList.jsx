@@ -12,10 +12,10 @@ const UsersList = () => {
 
     fetch("https://appcoffee-deploy1.onrender.com/api/users/userslist", {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
-      },
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   // Authorization: `Bearer ${token}`,
+      // },
       credentials: "include",
     })
       .then((res) => res.json())
