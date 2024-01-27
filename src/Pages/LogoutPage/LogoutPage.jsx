@@ -2,19 +2,16 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const LogoutPage = () => {
+  const { _id } = JSON.parse(localStorage.getItem("dataUser"));
   const inicioNavigate = useNavigate();
   const logout = async () => {
-    const cookie = document.cookie
+    const token = document.cookie
       .split("; ")
-      .find((row) => row.startsWith("jwtCookie="));
-    if (!cookie) {
-      console.error("No se encontró la cookie jwtCookie");
-      return;
-    }
-    const token = cookie.split("=")[1];
+      .find((row) => row.startsWith("jwtCookie="))
+      .split("=")[1];
     try {
       await fetch(
-        "https://appcoffee-deploy1.onrender.com/api/sessions/logout",
+        `https://appcoffee-deploy1.onrender.com/api/sessions/logout/${_id}`,
         {
           method: "POST",
           headers: {
