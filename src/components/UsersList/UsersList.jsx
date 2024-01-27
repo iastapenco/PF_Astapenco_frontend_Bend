@@ -5,18 +5,17 @@ const UsersList = () => {
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
-    // const token = document.cookie
-    //   .split("; ")
-    //   .find((row) => row.startsWith("jwtCookie="))
-    //   .split("=")[1];
+    const token = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("jwtCookie="))
+      .split("=")[1];
 
     fetch("https://appcoffee-deploy1.onrender.com/api/users/userslist", {
       method: "GET",
-      // headers: {
-      //   "Content-Type": "application/json",
-      //   // Authorization: `Bearer ${token}`,
-      // },
-      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => setUsers(data));
