@@ -10,16 +10,18 @@ const UsersList = () => {
   //     .find((row) => row.startsWith("jwtCookie="))
   //     .split("=")[1];
 
-    fetch("https://appcoffee-deploy1.onrender.com/api/users/userslist", {
+  const response = fetch(
+    "https://appcoffee-deploy1.onrender.com/api/users/userslist",
+    {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         //Authorization: `Bearer ${token}`,
       },
-    })
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  }, []);
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => setUsers(data));
 
   return (
     <div className="container">
