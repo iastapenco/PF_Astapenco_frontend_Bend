@@ -4,11 +4,11 @@ import ChangeUserRol from "../ChangeUserRol/ChangeUserRol";
 const UsersList = () => {
   const [users, setUsers] = useState(null);
 
-  useEffect(() => {
-    const token = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("jwtCookie="))
-      .split("=")[1];
+  // useEffect(() => {
+  //   const token = document.cookie
+  //     .split("; ")
+  //     .find((row) => row.startsWith("jwtCookie="))
+  //     .split("=")[1];
 
     fetch("https://appcoffee-deploy1.onrender.com/api/users/userslist", {
       method: "GET",
