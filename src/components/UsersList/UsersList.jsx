@@ -1,24 +1,30 @@
 import { useState, useEffect } from "react";
 import ChangeUserRol from "../ChangeUserRol/ChangeUserRol";
+import axios from "axios";
 
 const UsersList = () => {
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
-    const token = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("jwtCookie="))
-      .split("=")[1];
+    axios
+      .get("https://appcoffee-deploy1.onrender.com/api/users/userslist", {
+        withCredentials: true,
+      })
+      .then((res) => setUsers(res.data));
+    // const token = document.cookie
+    //   .split("; ")
+    //   .find((row) => row.startsWith("jwtCookie="))
+    //   .split("=")[1];
 
-    fetch("https://appcoffee-deploy1.onrender.com/api/users/userslist", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
+    // fetch("https://appcoffee-deploy1.onrender.com/api/users/userslist", {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => setUsers(data));
   }, []);
 
   return (
