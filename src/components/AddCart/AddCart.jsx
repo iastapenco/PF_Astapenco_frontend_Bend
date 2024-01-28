@@ -5,6 +5,7 @@ const AddCart = ({ data }) => {
   const formRef = useRef(null);
   const [cart, setCart] = useContext(CartContext);
   const dataUser = JSON.parse(localStorage.getItem("dataUser"));
+  const { _id } = data;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +20,7 @@ const AddCart = ({ data }) => {
       .split("=")[1];
 
     const response = await fetch(
-      `https://appcoffee-deploy1.onrender.com/api/carts/${dataUser.cart}/products/${data._id}`,
+      `https://appcoffee-deploy1.onrender.com/api/carts/${dataUser.cart}/products/${_id}`,
       {
         mode: "no-cors",
         method: "POST",

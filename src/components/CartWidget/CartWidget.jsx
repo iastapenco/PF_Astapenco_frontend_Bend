@@ -6,14 +6,14 @@ import "./cart_widget.css";
 const CartWidget = () => {
   const [cart, setCart] = useContext(CartContext);
 
-  const quantity = cart.reduce((acc, curr) => {
-    return acc + curr.quantity;
-  }, 0);
+  // const quantity = cart.reduce((acc, curr) => {
+  //   return acc + curr.quantity;
+  // }, 0);
 
   return (
     <div className="carrito">
       <ShoppingCartIcon sx={{ fontSize: "200%" }} />
-      <p className="number">{quantity}</p>
+      <p className="number">0</p>
     </div>
   );
 };
