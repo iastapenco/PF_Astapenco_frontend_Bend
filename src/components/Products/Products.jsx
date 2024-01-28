@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import CardProducts from "../CardProducts/CardProducts";
 import CartWidget from "../CartWidget/CartWidget";
+import AddCart from "../AddCart/AddCart";
 
 const Products = () => {
   const [products, setProducts] = useState(null);
@@ -30,6 +31,7 @@ const Products = () => {
               <div key={product._id} className="product_container ">
                 <div className="card">
                   <CardProducts data={product} />
+                  <AddCart data={product} />
                 </div>
               </div>
             );

@@ -1,7 +1,10 @@
 .carrito {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-end;
+    margin-right: 150px;
+    margin-top: 75px;
 }
 
 .number {
