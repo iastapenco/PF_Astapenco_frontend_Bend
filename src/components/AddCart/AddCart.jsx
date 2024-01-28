@@ -30,18 +30,13 @@ const AddCart = ({ data }) => {
       }
     );
 
-    if (response.status == 200) return alert("Producto agegado al carrito");
+    if (response.status == 200) return alert("Producto agregado al carrito");
   };
 
   return (
     <form onSubmit={handleSubmit} ref={formRef}>
       <label htmlFor="quantity">Introduzca la cantidad que desea comprar</label>
-      <input
-        type="number"
-        placeholder={defaultValue}
-        defaultValue={1}
-        name="quantity"
-      />
+      <input type="number" placeholder="1" defaultValue={1} name="quantity" />
       <button type="submit" class="btn btn-primary mt-3">
         Agregar al carrito
       </button>
