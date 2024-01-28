@@ -22,7 +22,6 @@ const AddCart = ({ data }) => {
     const response = await fetch(
       `https://appcoffee-deploy1.onrender.com/api/carts/${dataUser.cart}/products/${_id}`,
       {
-        mode: "no-cors",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
