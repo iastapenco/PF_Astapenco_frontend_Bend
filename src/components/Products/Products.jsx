@@ -28,7 +28,10 @@ const Products = () => {
           products.mensaje.docs &&
           products.mensaje.docs.map((product) => {
             return (
-              <div key={product._id} className="product_container ">
+              <div
+                key={product._id}
+                className="product_container d-flex flex-column"
+              >
                 <div className="card">
                   <CardProducts data={product} />
                   <AddCart data={product} />
