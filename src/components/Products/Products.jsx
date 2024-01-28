@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CardProducts from "../CardProducts/CardProducts";
+import CartWidget from "../CartWidget/CartWidget";
 
 const Products = () => {
   const [products, setProducts] = useState(null);
@@ -14,6 +15,9 @@ const Products = () => {
 
   return (
     <>
+      <div>
+        <CartWidget />
+      </div>
       <div>
         <h2 className="center">Lista de productos</h2>
       </div>
