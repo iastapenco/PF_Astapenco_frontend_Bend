@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const LogoutPage = () => {
-  const { _id } = JSON.parse(localStorage.getItem("dataUser"));
   const inicioNavigate = useNavigate();
   const logout = async () => {
     const token = document.cookie
@@ -11,7 +10,7 @@ const LogoutPage = () => {
       .split("=")[1];
     try {
       await fetch(
-        `https://appcoffee-deploy1.onrender.com/api/sessions/logout/${_id}`,
+        `https://appcoffee-deploy1.onrender.com/api/sessions/logout`,
         {
           method: "POST",
           headers: {
