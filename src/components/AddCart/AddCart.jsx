@@ -22,7 +22,6 @@ const AddCart = ({ data }) => {
     const response = await fetch(
       `https://appcoffee-deploy1.onrender.com/api/carts/${dataUser.cart}/products/${_id}`,
       {
-        credentials: "include",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +37,14 @@ const AddCart = ({ data }) => {
   return (
     <form onSubmit={handleSubmit} ref={formRef}>
       <label htmlFor="quantity">Introduzca la cantidad que desea comprar</label>
-      <input type="number" placeholder="1" defaultValue={1} name="quantity" />
+      <input
+        id="quantity"
+        type="number"
+        placeholder="1"
+        defaultValue={1}
+        name="quantity"
+        autocomplete="off"
+      />
       <button type="submit" class="btn btn-primary mt-3">
         Agregar al carrito
       </button>
