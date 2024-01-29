@@ -19,6 +19,11 @@ const AddCart = ({ data }) => {
       .find((row) => row.startsWith("jwtCookie="))
       .split("=")[1];
 
+    console.log("quantity:", quantity);
+    console.log("cart:", dataUser.cart);
+    console.log("_id:", _id);
+    console.log("token:", token);
+
     const response = await fetch(
       `https://appcoffee-deploy1.onrender.com/api/carts/${dataUser.cart}/products/${_id}`,
       {
@@ -30,8 +35,12 @@ const AddCart = ({ data }) => {
         body: JSON.stringify(quantity),
       }
     );
+    console.log("response:", response);
 
-    if (response.status == 200) return alert("Producto agregado al carrito");
+    if (response.status == 200) {
+      console.log("Producto agregado al carrito");
+      return alert("Producto agregado al carrito");
+    }
   };
 
   return (
